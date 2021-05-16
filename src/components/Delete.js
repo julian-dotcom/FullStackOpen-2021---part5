@@ -27,11 +27,11 @@ const Delete = ({ blog, setBlogs, setMessage }) => {
     )
 }
 
-Delete.propTypes = {
-    blog: propTypes.object.isRequired, 
-    setBlogs: propTypes.func.isRequired, 
-    setMessage: propTypes.func.isRequired
-}
+// Delete.propTypes = {
+//     blog: propTypes.object.isRequired, 
+//     setBlogs: propTypes.func.isRequired, 
+//     setMessage: propTypes.func.isRequired
+// }
 
 
 export default Delete

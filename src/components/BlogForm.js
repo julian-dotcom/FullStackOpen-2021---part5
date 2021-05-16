@@ -49,7 +49,7 @@ const BlogForm = ({ user, setMessage, setBlogs }) => {
                     <h2>create new entry</h2>
                     <form onSubmit={newBlog}>
                         <div>
-                            title: <input type='text' value={title} name='Title' onChange={({ target }) => setTitle(target.value)} />
+                            title: <input id='title' type='text' value={title} name='Title' onChange={({ target }) => setTitle(target.value)} />
                         </div>
                         <div>
                             author: <input type='text' value={author} onChange={({ target }) => setAuthor(target.value)} />

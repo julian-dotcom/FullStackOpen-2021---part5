@@ -13,11 +13,11 @@ const Blog = ({ blog, setBlogs, setMessage }) => {
   const [detailsVisible, setDetailsVisible] = useState(false)
   const showDetails = { display: detailsVisible ? '' : 'none' }
   return (
-    <div style={blogStyle}>
+    <div style={blogStyle} className='blogClass'>
       <div>
-      {blog.title} <button onClick={() => setDetailsVisible(!detailsVisible)}>{ detailsVisible ? 'hide' : 'show' }</button>
-      </div> 
-      <div style={showDetails}>
+        {blog.title} <button onClick={() => setDetailsVisible(!detailsVisible)}>{ detailsVisible ? 'hide' : 'show' }</button>
+      </div>
+      <div style={showDetails} className='togglableContent'>
         url: {blog.url}
         <br />
         <LikeButton blog={blog} setBlogs={setBlogs} setMessage={setMessage} />
