@@ -5,6 +5,7 @@ import Login from './components/Login'
 import BlogForm from './components/BlogForm'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import sortService from './services/sortByLikes'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
@@ -18,6 +19,7 @@ const App = () => {
       setBlogs( blogs )
     )  
   }, [])
+ 
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedInAppUser')
@@ -34,9 +36,9 @@ const App = () => {
       <h2>blogs</h2>
       <Message message={message} />
       <Login user={user} setUser={setUser}  username={username} setUsername={setUsername} password={password} setPassword={setPassword} setMessage={setMessage} />
-      <BlogForm user={user} setMessage={setMessage} />
+      <BlogForm user={user} setMessage={setMessage} setBlogs={setBlogs} />
       {user !== null 
-      ? blogs.map(blog => <Blog key={blog.id} blog={blog} />)
+      ? sortService.sortBlogs(blogs).map(blog => <Blog key={blog.id} blog={blog} setBlogs={setBlogs} setMessage={setMessage} />)
       : null  
       }
     </div>

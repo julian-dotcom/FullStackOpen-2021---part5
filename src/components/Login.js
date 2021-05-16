@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import blogService from '../services/blogs'
 import loginService from '../services/login'
-const messageTimer = 10000000
+const messageTimer = 5000
 
 const Login = ({ user, setUser, username, setUsername, password, setPassword, setMessage }) => {
+
+    const [loginVisible, setLoginVisible] = useState(false)
 
     const handleLogin = async event => {
         event.preventDefault()
@@ -34,9 +36,15 @@ const Login = ({ user, setUser, username, setUsername, password, setPassword, se
         window.location.reload()
       }
 
-      if (user === null) {
+      if (user === null) { // user is not logged in
+        const hideWhenFormVisible = { display: loginVisible ? 'none' : '' }
+        const showWhenFormVisible = { display: loginVisible ? '' : 'none' }
         return (
             <div>
+            <div style={hideWhenFormVisible}>
+                <button onClick={() => setLoginVisible(true)}>Log in</button>
+            </div>
+            <div style={showWhenFormVisible}>
             <form onSubmit={handleLogin}>
                 <div>
                     username
@@ -48,9 +56,12 @@ const Login = ({ user, setUser, username, setUsername, password, setPassword, se
                 </div>
                 <button type='submit'>login</button>
             </form>
+            <button onClick={() => setLoginVisible(false)}>cancel</button>
             </div>  
+            </div>
         )
     }
+    // In case the user is logged in, just show basic info on him
     return <div><p>{user.username} is logged in. <button onClick={logout}>Log out</button></p></div>
 }
 

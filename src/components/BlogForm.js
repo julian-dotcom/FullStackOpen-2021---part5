@@ -3,11 +3,11 @@ import blogService from '../services/blogs'
 const messageTimer = 5000
 
 
-const BlogForm = ({ user, setMessage }) => {
-
+const BlogForm = ({ user, setMessage, setBlogs }) => {
     const [ title, setTitle ] = useState('')
     const [ author, setAuthor ] = useState('')
     const [ url, setUrl ] = useState('')
+    const [formVisible, setFormVisible] = useState(false)
 
     const newBlog = async event => {
         event.preventDefault()
@@ -22,6 +22,8 @@ const BlogForm = ({ user, setMessage }) => {
             setTitle('')
             setAuthor('')
             setUrl('')  
+            const blogs = await blogService.getAll() // make sure newly added blog is shown
+            setBlogs(blogs)
             setMessage('blog entry successful')
             setTimeout(() => {
                 setMessage('')
@@ -36,21 +38,29 @@ const BlogForm = ({ user, setMessage }) => {
     }
 
     if (user !== null) {
+        const hideWhenFormVisible = { display: formVisible ? 'none' : '' }
+        const showWhenFormVisible = { display: formVisible ? '' : 'none' }
         return(
             <div>
-                <h2>create new entry</h2>
-                <form onSubmit={newBlog}>
-                    <div>
-                        title: <input type='text' value={title} name='Title' onChange={({ target }) => setTitle(target.value)} />
-                    </div>
-                    <div>
-                        author: <input type='text' value={author} onChange={({ target }) => setAuthor(target.value)} />
-                    </div>
-                    <div>
-                        url: <input type='text' value={url} onChange={({ target }) => setUrl(target.value)} />
-                    </div>
-                    <button type='submit'>Create blog</button>
-                </form>
+                <div style={hideWhenFormVisible}>
+                    <button onClick={() => setFormVisible(true)}>new blog</button>
+                </div>
+                <div style={showWhenFormVisible}>
+                    <h2>create new entry</h2>
+                    <form onSubmit={newBlog}>
+                        <div>
+                            title: <input type='text' value={title} name='Title' onChange={({ target }) => setTitle(target.value)} />
+                        </div>
+                        <div>
+                            author: <input type='text' value={author} onChange={({ target }) => setAuthor(target.value)} />
+                        </div>
+                        <div>
+                            url: <input type='text' value={url} onChange={({ target }) => setUrl(target.value)} />
+                        </div>
+                        <button type='submit'>Create blog</button>
+                    </form>
+                    <button onClick={() => setFormVisible(false)}>cancel</button>
+                </div>
             </div>
         )
     }
