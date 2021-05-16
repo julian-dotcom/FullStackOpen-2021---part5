@@ -1,7 +1,8 @@
 import React from 'react'
 import blogService from '../services/blogs'
+import propTypes from 'prop-types'
 
-export const Delete = ({ blog, setBlogs, setMessage }) => {
+const Delete = ({ blog, setBlogs, setMessage }) => {
 
     const deleteFunction = async () => {
         try {        
@@ -24,6 +25,12 @@ export const Delete = ({ blog, setBlogs, setMessage }) => {
             <button onClick={() => deleteFunction()}>Delete</button>
         </div>
     )
+}
+
+Delete.propTypes = {
+    blog: propTypes.object.isRequired, 
+    setBlogs: propTypes.func.isRequired, 
+    setMessage: propTypes.func.isRequired
 }
 
 
