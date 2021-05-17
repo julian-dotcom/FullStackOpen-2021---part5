@@ -52,12 +52,12 @@ const BlogForm = ({ user, setMessage, setBlogs }) => {
                             title: <input id='title' type='text' value={title} name='Title' onChange={({ target }) => setTitle(target.value)} />
                         </div>
                         <div>
-                            author: <input type='text' value={author} onChange={({ target }) => setAuthor(target.value)} />
+                            author: <input id='author' type='text' value={author} onChange={({ target }) => setAuthor(target.value)} />
                         </div>
                         <div>
-                            url: <input type='text' value={url} onChange={({ target }) => setUrl(target.value)} />
+                            url: <input id='url' type='text' value={url} onChange={({ target }) => setUrl(target.value)} />
                         </div>
-                        <button type='submit'>Create blog</button>
+                        <button id='submitBlog' type='submit'>Create blog</button>
                     </form>
                     <button onClick={() => setFormVisible(false)}>cancel</button>
                 </div>

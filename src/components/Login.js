@@ -48,13 +48,13 @@ const Login = ({ user, setUser, username, setUsername, password, setPassword, se
             <form onSubmit={handleLogin}>
                 <div>
                     username
-                    <input type='text' value={username} name='Username' onChange={({ target }) => setUsername(target.value)} />
+                    <input id='username' type='text' value={username} name='Username' onChange={({ target }) => setUsername(target.value)} />
                 </div>
                 <div>
                     password
-                    <input type='text' value={password} name='Password' onChange={({ target }) => setPassword(target.value)} />
+                    <input id='password' type='text' value={password} name='Password' onChange={({ target }) => setPassword(target.value)} />
                 </div>
-                <button type='submit'>login</button>
+                <button id='loginSubmit' type='submit'>login</button>
             </form>
             <button onClick={() => setLoginVisible(false)}>cancel</button>
             </div>  
@@ -62,7 +62,7 @@ const Login = ({ user, setUser, username, setUsername, password, setPassword, se
         )
     }
     // In case the user is logged in, just show basic info on him
-    return <div><p>{user.username} is logged in. <button onClick={logout}>Log out</button></p></div>
+    return <div><p>{user.username} is logged in. <button id='logout' onClick={logout}>Log out</button></p></div>
 }
 
 export default Login

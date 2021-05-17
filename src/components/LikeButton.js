@@ -20,7 +20,7 @@ const LikeButton = ({ blog, setBlogs, setMessage }) => {
 
     return (
         <div>
-            likes: {blog.likes}  <button onClick={() => updateLikes(blog)}>Like</button>
+            likes: {blog.likes}  <button className='likeButton' onClick={() => updateLikes(blog)}>Like</button>
         </div>
     )
 }

@@ -15,7 +15,7 @@ const Blog = ({ blog, setBlogs, setMessage }) => {
   return (
     <div style={blogStyle} className='blogClass'>
       <div>
-        {blog.title} <button onClick={() => setDetailsVisible(!detailsVisible)}>{ detailsVisible ? 'hide' : 'show' }</button>
+        {blog.title} <button className='show' onClick={() => setDetailsVisible(!detailsVisible)}>{ detailsVisible ? 'hide' : 'show' }</button>
       </div>
       <div style={showDetails} className='togglableContent'>
         url: {blog.url}

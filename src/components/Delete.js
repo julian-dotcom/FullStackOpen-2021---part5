@@ -7,12 +7,12 @@ const Delete = ({ blog, setBlogs, setMessage }) => {
     const deleteFunction = async () => {
         try {        
             if (!window.confirm('Do you really want to delete this blog entry? This cannot be undone.')) {return}
-            await blogService.deleteBlog(blog.id)
-            const blogs = await blogService.getAll() // make sure deleted blog is removed
-            console.log(blogs)
+            const response = await blogService.deleteBlog(blog.id)
+            console.log(response)
+            const blogs = await blogService.getAll() // make sure deleted blog is removed from rendered list
             setBlogs(blogs)
         } catch (exception) {
-            setMessage('error, like was unsuccessful')
+            setMessage('error, deletion was unsuccessful')
             setTimeout(() => {
                 setMessage('')
             }, 5000)
@@ -22,7 +22,7 @@ const Delete = ({ blog, setBlogs, setMessage }) => {
 
     return (
         <div>
-            <button onClick={() => deleteFunction()}>Delete</button>
+            <button className='deleteButton' onClick={() => deleteFunction()}>Delete</button>
         </div>
     )
 }

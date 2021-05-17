@@ -3,8 +3,6 @@ import React from 'react'
 
 const Message = ({ message }) => {
     let colorScheme = ''
-    console.log(colorScheme)
-
     const messageStyle = {
         borderColor: 'grey',
         borderStyle: 'solid',
@@ -30,7 +28,7 @@ const Message = ({ message }) => {
     if (message !== '') {
         return (
             <div style={{ diplay: 'table' }}>
-                <p style={messageStyle}>{message}</p>
+                <p id='messageP' style={messageStyle}>{message}</p>
             </div>
         )
     }
