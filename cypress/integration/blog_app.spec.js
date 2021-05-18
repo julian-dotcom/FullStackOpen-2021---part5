@@ -1,3 +1,6 @@
+import blogService from '../../src/services/blogs'
+import 'cypress-localstorage-commands'
+
 describe('Blog app', function() {
   
   beforeEach(function() {
@@ -97,6 +100,41 @@ describe('Blog app', function() {
       cy.contains('unsuccessful')
 
     })
+  })
+  describe('Blogs are ordered by likes', function() {
+    beforeEach(function() {
+      cy.contains('Log in').click()
+      cy.get('#username').type('Julian')
+      cy.get('#password').type('Julian')
+      cy.get('#loginSubmit').click()
+
+
+      //WASN'T ABLE TO COMPLETE PART 5.22. I WAS NOT ABLE TO ACCESS THE LOCAL STORAGE USING CYPRUS
+
+      //cy.request('POST', 'http://localhost:3003/api/blogs', blog)
+    })
+    it.only('check if blogs are orderd correctly', function() {
+
+      cy.getLocalStorage('loggedInAppUser').then(obj => console.log(obj))
+      // cy.createBlog({
+      //   title: 'title',
+      //   author: 'author',
+      //   url: 'url'
+      // })
+      // cy.contains('new blog').click()
+      // cy.get('#title').type('blog2')
+      // cy.get('#author').type('blog2')
+      // cy.get('#url').type('blog2')
+      // cy.get('#submitBlog').click()
+
+      // // cy.get('#title').type('blog3')
+      // // cy.get('#author').type('blog3')
+      // // cy.get('#url').type('blog3')
+      // // cy.get('#submitBlog').click()
+
+      //cy.contains('blog')
+    })
+    
   })
 })
 

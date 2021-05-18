@@ -57,7 +57,7 @@ const BlogForm = ({ user, setMessage, setBlogs }) => {
                         <div>
                             url: <input id='url' type='text' value={url} onChange={({ target }) => setUrl(target.value)} />
                         </div>
-                        <button id='submitBlog' type='submit'>Create blog</button>
+                        <button id='submitBlog' type='submit' onClick={() => setFormVisible(false)}>Create blog</button>
                     </form>
                     <button onClick={() => setFormVisible(false)}>cancel</button>
                 </div>

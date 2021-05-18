@@ -18,7 +18,6 @@
     "eject": "react-scripts eject",
     "eslint": "eslint .",
     "cypress:open": "cypress open"
-
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +42,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "cypress": "^7.3.0",
+    "cypress-localstorage-commands": "^1.4.4",
     "eslint-plugin-jest": "^24.3.6"
   }
 }
